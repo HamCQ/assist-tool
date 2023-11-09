@@ -111,21 +111,21 @@ const parseTagText = (target) => {
     const __role = !!target.getAttribute('role') && target.getAttribute('role').toUpperCase() 
   
     if (__role === 'A' || target.tagName === 'A') {
-        console.log('这是一个链接:' + target.alt || target.title || target.innerText);
+        // console.log('这是一个链接:' + target.alt || target.title || target.innerText);
         return `链接 ${target.alt || target.title || target.innerText}`;
     }
 
     if (target.children.length === 0){
         if (__role === 'IMG' ||target.tagName === 'IMG') {
-            console.log('这是一张图片:' + target.alt || target.title);
+            // console.log('这是一张图片:' + target.alt || target.title);
             return `图片 ${target.alt || target.title}`;
         }
         if (__role === 'BUTTON' ||target.tagName === 'BUTTON') {
-            console.log('这是一个按钮:' +  target.innerText);
+            // console.log('这是一个按钮:' +  target.innerText);
             return `按钮 ${target.alt || target.title || target.innerText}`;
         }
         if (__role === 'INPUT' ||target.tagName === 'INPUT') {
-            console.log(`这是一个${__name}:` + target.alt || target.title || target.value);
+            // console.log(`这是一个${__name}:` + target.alt || target.title || target.value);
             return `${__name} ${target.alt || target.title || target.value}`;
         }
 
@@ -133,20 +133,20 @@ const parseTagText = (target) => {
             const __linkId = target.getAttribute('for')
             const __linkDom = document.getElementById(__linkId)
            if(!!__linkDom && !!__linkDom.type && __linkDom.type == 'radio') {
-            console.log(`这是一个单选:` + target.alt || target.title || target.innerText);
+            // console.log(`这是一个单选:` + target.alt || target.title || target.innerText);
             return `单选 ${target.alt || target.title || target.innerText}`;
            }
         }
 
         if (target.alt || target.title || target.innerText){
-            console.log(`${__name} ${target.alt || target.title || target.innerText}`);
+            // console.log(`${__name} ${target.alt || target.title || target.innerText}`);
             return `${__name} ${target.alt || target.title || target.innerText}`;
         }
         return ''
     } 
 
     if (target.children.length < 5 && (target.alt || target.title || target.innerText)){
-        console.log(`${__name} ${target.alt || target.title || target.innerText}`);
+        // console.log(`${__name} ${target.alt || target.title || target.innerText}`);
         return `${__name} ${target.alt || target.title || target.innerText}`;
     }
     

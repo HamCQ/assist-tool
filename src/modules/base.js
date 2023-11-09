@@ -140,7 +140,7 @@ export default class Base {
         DomContainer.className = id
         DomContainer.style.display = 'none'
         if(typeof(htmlFn) !== 'function') {
-           console.error('htmlFn不是一个函数')
+          //  console.error('htmlFn不是一个函数')
            return
         }
         const __html = htmlFn(namespace)

@@ -132,9 +132,10 @@ mouseOver(event){
 playAudio(text) {
     if(window.speechSynthesis){
         this.systemAudioAction(text)
-    } else {
-        this.degradationAudioAction(text)
-    }
+    } 
+    // else {
+    //     this.degradationAudioAction(text)
+    // }
 },
 stopAudio() {
      if(window.speechSynthesis){
@@ -163,28 +164,28 @@ systemAudioAction(text) {
     msg.voice = this.getWindowVoice()  // 使用本地服务合成语音(若是获取不到 请异步获取, 加一个setTimeout)
     synth.speak(msg);    // 播放
 },
-degradationAudioAction(text) {
-    const { namespace, AudioApi, isAudio, audio, speed, forceSafariPlayAudio } = Audio
-    if(!isAudio) {
-        return
-    }
-   let __speed = speed == 'middle' ? -150 : 0
-   let  AudioParam = `speed=${__speed}&text=${encodeURI(text)}&V=${Date.now()}`
-   let AudioUrl = `${AudioApi}?${AudioParam}`
-    audio.src = AudioUrl
-    document.getElementById(`${namespace}-audio-source`).src =  AudioUrl
-    document.getElementById(`${namespace}-audio-embed`).src =  AudioUrl
-    let playPromise =  audio.play();
-    if(playPromise) {
-        playPromise.then(_ => {
-        // audio.pause();
-            removeEvent(document,'click', forceSafariPlayAudio)
-        })
-        .catch(error => {
-            console.log(error)
-        });
-    }
-},
+// degradationAudioAction(text) {
+//     const { namespace, AudioApi, isAudio, audio, speed, forceSafariPlayAudio } = Audio
+//     if(!isAudio) {
+//         return
+//     }
+//    let __speed = speed == 'middle' ? -150 : 0
+//    let  AudioParam = `speed=${__speed}&text=${encodeURI(text)}&V=${Date.now()}`
+//    let AudioUrl = `${AudioApi}?${AudioParam}`
+//     audio.src = AudioUrl
+//     document.getElementById(`${namespace}-audio-source`).src =  AudioUrl
+//     document.getElementById(`${namespace}-audio-embed`).src =  AudioUrl
+//     let playPromise =  audio.play();
+//     if(playPromise) {
+//         playPromise.then(_ => {
+//         // audio.pause();
+//             removeEvent(document,'click', forceSafariPlayAudio)
+//         })
+//         .catch(error => {
+//             console.log(error)
+//         });
+//     }
+// },
 reset() {
     const { namespace } = Audio
     this.closeAudio()

@@ -30,7 +30,7 @@ const ZoomPage = {
     },
     zoomOut(core) {
         if(this.size >= 1.3) {
-            console.log('已最大')
+            // console.log('已最大')
             Audio.playAudio(audioTabText.zoomOutEnd)
             this.updateZoomState(core)
             return
@@ -42,7 +42,7 @@ const ZoomPage = {
     },
     zoomMin(core) {
         if(this.size <= 1.0) {
-            console.log('已最小')
+            // console.log('已最小')
             Audio.playAudio(audioTabText.zoomMinEnd)
             this.updateZoomState(core)
             return
