@@ -154,7 +154,9 @@ systemAudioAction(text) {
     }
     const __speed = speed == 'middle' ? 1 : 1.5
     const synth = window.speechSynthesis;
-    synth.cancel()
+    if (synth.speaking){
+        synth.cancel()
+    }
     let msg = new SpeechSynthesisUtterance();
     msg.text = text;     // 文字内容
     msg.lang = "zh-CN";  // 使用的语言:中文
